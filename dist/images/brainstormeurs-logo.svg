@@ -1,0 +1,66 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer circle with gradient -->
+  <defs>
+    <radialGradient id="oceanGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#4A90E2;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#2E5BBA;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1E3A8A;stop-opacity:1" />
+    </radialGradient>
+    <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#60A5FA;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1D4ED8;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Main circle background -->
+  <circle cx="100" cy="100" r="95" fill="url(#oceanGradient)" stroke="#1E3A8A" stroke-width="3"/>
+  
+  <!-- Top text "BRAINSTORMEURS" -->
+  <path id="topCircle" d="M 25 100 A 75 75 0 0 1 175 100" fill="none"/>
+  <text font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">
+    <textPath href="#topCircle" startOffset="50%" text-anchor="middle">
+      BRAINSTORMEURS
+    </textPath>
+  </text>
+  
+  <!-- Center logo area -->
+  <circle cx="100" cy="85" r="40" fill="#E5E7EB" stroke="#374151" stroke-width="2"/>
+  
+  <!-- Robot/gear icon in center -->
+  <circle cx="100" cy="85" r="10" fill="#374151"/>
+  <circle cx="100" cy="85" r="15" fill="none" stroke="#374151" stroke-width="2"/>
+  <rect x="95" y="68" width="10" height="10" fill="#374151"/>
+  <rect x="85" y="80" width="10" height="10" fill="#374151"/>
+  <rect x="105" y="80" width="10" height="10" fill="#374151"/>
+  <rect x="95" y="92" width="10" height="10" fill="#374151"/>
+  
+  <!-- Wave section -->
+  <path d="M 15 125 Q 50 115 85 125 T 155 125 T 185 125 L 185 145 Q 155 135 120 145 T 50 145 T 15 145 Z" 
+        fill="url(#waveGradient)"/>
+  
+  <!-- Underwater section -->
+  <circle cx="100" cy="100" r="80" fill="none" stroke="white" stroke-width="1" opacity="0.3"/>
+  
+  <!-- Fish icon -->
+  <ellipse cx="65" cy="155" rx="15" ry="8" fill="#10B981"/>
+  <polygon points="50,155 60,150 60,160" fill="#10B981"/>
+  <circle cx="72" cy="152" r="2" fill="white"/>
+  
+  <!-- Coral -->
+  <path d="M 130 165 Q 135 155 140 165 Q 145 155 150 165" stroke="#EF4444" stroke-width="4" fill="none"/>
+  <path d="M 125 170 Q 130 160 135 170 Q 140 160 145 170" stroke="#F97316" stroke-width="3" fill="none"/>
+  
+  <!-- Bottom text "UNDER THE OCEAN!" -->
+  <path id="bottomCircle" d="M 175 100 A 75 75 0 0 1 25 100" fill="none"/>
+  <text font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">
+    <textPath href="#bottomCircle" startOffset="50%" text-anchor="middle">
+      UNDER THE OCEAN!
+    </textPath>
+  </text>
+  
+  <!-- Year badge -->
+  <rect x="75" y="185" width="50" height="16" rx="8" fill="white" opacity="0.95"/>
+  <text x="100" y="196" font-family="Arial, sans-serif" font-size="10" font-weight="bold" 
+        fill="#1E3A8A" text-anchor="middle">2024-2025</text>
+</svg> 

@@ -1,0 +1,221 @@
+/**
+ * Header Component Styles
+ * BRAINSTORMEURS branding and navigation
+ */
+
+.app-header {
+  background: linear-gradient(135deg, #1E3A8A 0%, #2E5BBA 50%, #4A90E2 100%);
+  color: white;
+  padding: 20px 32px;
+  box-shadow: 0 4px 20px rgba(30, 58, 138, 0.4);
+  position: relative;
+  z-index: 1000;
+  border-bottom: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+.header-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-logo {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.1);
+  padding: 6px;
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.2);
+}
+
+.header-logo:hover {
+  transform: rotate(10deg) scale(1.1);
+  border-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.4);
+}
+
+.header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-start;
+}
+
+.header-title {
+  font-size: 2.2rem;
+  font-weight: 900;
+  margin: 0;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+  letter-spacing: 2px;
+  background: linear-gradient(45deg, #ffffff, #e0f2fe, #ffffff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 200%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.header-subtitle {
+  font-size: 1.1rem;
+  margin: 0;
+  opacity: 0.95;
+  font-weight: 600;
+  color: #E0F2FE;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.5px;
+}
+
+.project-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.project-badge {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.15));
+  padding: 10px 18px;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 700;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(15px);
+  transition: all 0.4s ease;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.2);
+}
+
+.project-badge:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.25));
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.year-badge {
+  background: linear-gradient(135deg, #ffffff, #f8fafc);
+  color: #1E3A8A;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  border: 2px solid rgba(30, 58, 138, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  letter-spacing: 1px;
+}
+
+.year-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  border-color: rgba(30, 58, 138, 0.5);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .app-header {
+    padding: 16px 20px;
+  }
+  
+  .header-content {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+  
+  .logo-section {
+    flex-direction: row;
+    gap: 16px;
+    align-items: center;
+  }
+  
+  .header-text {
+    align-items: center;
+  }
+  
+  .header-logo {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .header-title {
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+  }
+  
+  .header-subtitle {
+    font-size: 1rem;
+  }
+  
+  .project-info {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+  
+  .project-badge {
+    font-size: 0.9rem;
+    padding: 8px 14px;
+  }
+  
+  .year-badge {
+    font-size: 0.85rem;
+    padding: 6px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-header {
+    padding: 12px 16px;
+  }
+  
+  .header-content {
+    gap: 12px;
+  }
+  
+  .logo-section {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .header-logo {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .header-title {
+    font-size: 1.5rem;
+    letter-spacing: 0.5px;
+  }
+  
+  .header-subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .project-badge {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+  }
+  
+  .year-badge {
+    font-size: 0.75rem;
+    padding: 5px 10px;
+  }
+} 
