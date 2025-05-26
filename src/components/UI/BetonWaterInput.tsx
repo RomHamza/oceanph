@@ -21,6 +21,9 @@ export const BetonWaterInput: React.FC<BetonWaterInputProps> = ({
   const [quantity, setQuantity] = useState<string>('50');
   const [error, setError] = useState<string>('');
 
+  console.log('BetonWaterInput: Current quantity state:', quantity);
+  console.log('BetonWaterInput: isLoading:', isLoading, 'disabled:', disabled);
+
   const presetQuantities = [
     { value: 50, label: '50L', description: 'Small test' },
     { value: 100, label: '100L', description: 'Medium test' },
@@ -49,6 +52,7 @@ export const BetonWaterInput: React.FC<BetonWaterInputProps> = ({
   };
 
   const handleQuantityChange = (value: string) => {
+    console.log('BetonWaterInput: handleQuantityChange called with:', value);
     setQuantity(value);
     if (value.trim()) {
       validateQuantity(value);
@@ -58,18 +62,21 @@ export const BetonWaterInput: React.FC<BetonWaterInputProps> = ({
   };
 
   const handlePresetClick = (value: number) => {
+    console.log('BetonWaterInput: handlePresetClick called with:', value);
     setQuantity(value.toString());
     setError('');
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    console.log('BetonWaterInput: handleSubmit called with quantity:', quantity);
     
     if (!validateQuantity(quantity)) {
       return;
     }
 
     const numQuantity = parseFloat(quantity);
+    console.log('BetonWaterInput: Calling onAddBeton with:', numQuantity);
     onAddBeton(numQuantity);
   };
 
@@ -99,10 +106,18 @@ export const BetonWaterInput: React.FC<BetonWaterInputProps> = ({
               max="15000"
               step="0.1"
               disabled={disabled || isLoading}
+              style={{ 
+                fontSize: '16px', 
+                color: '#000',
+                backgroundColor: disabled || isLoading ? '#f8f9fa' : '#fff'
+              }}
             />
             <span className="input-unit">L</span>
           </div>
           {error && <div className="error-message">{error}</div>}
+          <div style={{ fontSize: '12px', color: '#666', marginTop: '4px' }}>
+            Debug: Current value = "{quantity}"
+          </div>
         </div>
 
         <div className="preset-buttons">
