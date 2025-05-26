@@ -1,0 +1,68 @@
+.land-location-alert {
+  background: linear-gradient(135deg, #f8f4e6 0%, #f0e6d2 100%);
+  border: 2px solid #d4a574;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin: 16px 0;
+}
+
+.land-location-icon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.land-location-alert h3 {
+  color: #8b4513;
+  margin: 0 0 12px 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.land-location-alert p {
+  color: #5d4037;
+  margin: 8px 0;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.land-location-alert small {
+  color: #795548;
+  font-size: 0.85rem;
+  font-style: italic;
+  display: block;
+  margin-top: 8px;
+}
+
+.land-location-suggestion {
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 16px;
+  border-left: 4px solid #ff9800;
+}
+
+.land-location-suggestion p {
+  margin: 0;
+  color: #e65100;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .land-location-alert {
+    padding: 16px;
+    margin: 12px 0;
+  }
+  
+  .land-location-icon {
+    font-size: 2rem;
+  }
+  
+  .land-location-alert h3 {
+    font-size: 1.2rem;
+  }
+} 

@@ -1,0 +1,43 @@
+.map-container {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+/* Fix for Leaflet default marker icons in React */
+.leaflet-default-icon-path {
+  background-image: url('https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png');
+}
+
+/* Ensure map takes full container size */
+.leaflet-container {
+  height: 100% !important;
+  width: 100% !important;
+}
+
+/* Custom cursor for map interaction */
+.leaflet-container {
+  cursor: crosshair;
+}
+
+.leaflet-container:active {
+  cursor: pointer;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .map-container {
+    height: 100vh;
+  }
+}
+
+/* Fix for Leaflet marker icons */
+.leaflet-marker-icon {
+  margin-left: -12px !important;
+  margin-top: -41px !important;
+}
+
+.leaflet-marker-shadow {
+  margin-left: -12px !important;
+  margin-top: -41px !important;
+} 
