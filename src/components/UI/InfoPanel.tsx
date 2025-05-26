@@ -54,14 +54,8 @@ const InfoPanel: React.FC = () => {
   const concreteActions = useConcreteActions();
 
   const formatCoordinate = (value: number, type: 'lat' | 'lng'): string => {
-    const direction = type === 'lat' 
-      ? (value >= 0 ? 'N' : 'S')
-      : (value >= 0 ? 'E' : 'W');
+    const direction = type === 'lat' ? (value >= 0 ? 'N' : 'S') : (value >= 0 ? 'E' : 'W');
     return `${Math.abs(value).toFixed(4)}° ${direction}`;
-  };
-
-  const handleNewSimulation = () => {
-    appActions.resetState();
   };
 
   const handleConcreteCalculation = async (quantity: number) => {

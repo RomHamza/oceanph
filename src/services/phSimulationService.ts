@@ -19,21 +19,21 @@ const calculateLatitudeFactor = (latitude: number): number => {
   const absLatitude = Math.abs(latitude);
   
   // Polar regions (more acidic)
-  if (absLatitude >= PH_CONSTANTS.POLAR_LATITUDE_THRESHOLD) {
-    return PH_CONSTANTS.POLAR_PH_OFFSET;
+  if (absLatitude >= (PH_CONSTANTS.POLAR_LATITUDE_THRESHOLD as number)) {
+    return PH_CONSTANTS.POLAR_PH_OFFSET as number;
   }
   
   // Tropical regions (slightly more alkaline)
-  if (absLatitude <= PH_CONSTANTS.TROPICAL_LATITUDE_THRESHOLD) {
-    return PH_CONSTANTS.TROPICAL_PH_OFFSET;
+  if (absLatitude <= (PH_CONSTANTS.TROPICAL_LATITUDE_THRESHOLD as number)) {
+    return PH_CONSTANTS.TROPICAL_PH_OFFSET as number;
   }
   
   // Temperate regions - gradual transition
-  const temperate_factor = (absLatitude - PH_CONSTANTS.TROPICAL_LATITUDE_THRESHOLD) / 
-                          (PH_CONSTANTS.POLAR_LATITUDE_THRESHOLD - PH_CONSTANTS.TROPICAL_LATITUDE_THRESHOLD);
+  const temperate_factor = (absLatitude - (PH_CONSTANTS.TROPICAL_LATITUDE_THRESHOLD as number)) / 
+                          ((PH_CONSTANTS.POLAR_LATITUDE_THRESHOLD as number) - (PH_CONSTANTS.TROPICAL_LATITUDE_THRESHOLD as number));
   
-  return PH_CONSTANTS.TROPICAL_PH_OFFSET * (1 - temperate_factor) + 
-         PH_CONSTANTS.POLAR_PH_OFFSET * temperate_factor;
+  return (PH_CONSTANTS.TROPICAL_PH_OFFSET as number) * (1 - temperate_factor) + 
+         (PH_CONSTANTS.POLAR_PH_OFFSET as number) * temperate_factor;
 };
 
 /**
@@ -42,14 +42,14 @@ const calculateLatitudeFactor = (latitude: number): number => {
 const addRealisticNoise = (baseValue: number): number => {
   // Generate random noise between -1 and 1
   const noise = (Math.random() - 0.5) * 2;
-  return baseValue + (noise * PH_CONSTANTS.RANDOM_NOISE_FACTOR);
+  return baseValue + (noise * (PH_CONSTANTS.RANDOM_NOISE_FACTOR as number));
 };
 
 /**
  * Clamp pH value to realistic ocean range
  */
 const clampPhValue = (value: number): number => {
-  return Math.max(PH_CONSTANTS.MIN_PH, Math.min(PH_CONSTANTS.MAX_PH, value));
+  return Math.max(PH_CONSTANTS.MIN_PH as number, Math.min(PH_CONSTANTS.MAX_PH as number, value));
 };
 
 /**
@@ -92,7 +92,7 @@ export const simulatePh = (latitude: number, longitude: number): number => {
   }
 
   // Start with average ocean pH
-  let ph = PH_CONSTANTS.AVERAGE_PH;
+  let ph = PH_CONSTANTS.AVERAGE_PH as number;
   
   // Apply latitude-based variation
   ph += calculateLatitudeFactor(latitude);

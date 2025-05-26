@@ -48,14 +48,6 @@ export const PhComparisonDisplay: React.FC<PhComparisonDisplayProps> = ({
     return isIncrease ? 'increase' : 'decrease';
   };
 
-  const formatPercentage = (value: number): string => {
-    return (value * 100).toFixed(4) + '%';
-  };
-
-  const formatEfficiency = (value: number): string => {
-    return (value / 1000).toFixed(3) + '/1000L';
-  };
-
   return (
     <div className="ph-comparison-display">
       <div className="comparison-header">
