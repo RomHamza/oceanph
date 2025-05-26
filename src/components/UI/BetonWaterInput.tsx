@@ -18,14 +18,16 @@ export const BetonWaterInput: React.FC<BetonWaterInputProps> = ({
   isLoading,
   disabled = false
 }) => {
-  const [quantity, setQuantity] = useState<string>('100');
+  const [quantity, setQuantity] = useState<string>('50');
   const [error, setError] = useState<string>('');
 
   const presetQuantities = [
-    { value: 10, label: '10L', description: 'Small batch' },
-    { value: 100, label: '100L', description: 'Medium batch' },
-    { value: 500, label: '500L', description: 'Large batch' },
-    { value: 1000, label: '1000L', description: 'Industrial scale' }
+    { value: 50, label: '50L', description: 'Small test' },
+    { value: 100, label: '100L', description: 'Medium test' },
+    { value: 250, label: '250L', description: 'Large test' },
+    { value: 500, label: '500L', description: 'Very large' },
+    { value: 1000, label: '1000L', description: 'Industrial' },
+    { value: 2000, label: '2K L', description: 'Massive impact' }
   ];
 
   const validateQuantity = (value: string): boolean => {
@@ -38,8 +40,8 @@ export const BetonWaterInput: React.FC<BetonWaterInputProps> = ({
       setError('Minimum quantity is 0.1 liters');
       return false;
     }
-    if (num > 10000) {
-      setError('Maximum quantity is 10,000 liters');
+    if (num > 15000) {
+      setError('Maximum quantity is 15,000 liters');
       return false;
     }
     setError('');
@@ -74,9 +76,9 @@ export const BetonWaterInput: React.FC<BetonWaterInputProps> = ({
   return (
     <div className="beton-water-input">
       <div className="input-header">
-        <h4>🏗️ Concrete Wash Water Addition</h4>
+        <h4>🏗️ Concrete Wastewater Addition</h4>
         <p className="input-description">
-          Enter the quantity of concrete wash water to add to the ocean
+          Add concrete wastewater (pH 12.0) to neutralize ocean acidification
         </p>
       </div>
 
@@ -94,7 +96,7 @@ export const BetonWaterInput: React.FC<BetonWaterInputProps> = ({
               className={`quantity-input ${error ? 'error' : ''}`}
               placeholder="Enter quantity..."
               min="0.1"
-              max="10000"
+              max="15000"
               step="0.1"
               disabled={disabled || isLoading}
             />
@@ -142,21 +144,27 @@ export const BetonWaterInput: React.FC<BetonWaterInputProps> = ({
 
       <div className="info-section">
         <div className="info-item">
-          <span className="info-icon">ℹ️</span>
+          <span className="info-icon">🧪</span>
           <span className="info-text">
-            Concrete wash water typically has a pH of ~12.0
-          </span>
-        </div>
-        <div className="info-item">
-          <span className="info-icon">⚠️</span>
-          <span className="info-text">
-            Results are simulated and consider ocean buffering effects
+            Concrete wastewater contains OH⁻ ions that neutralize H⁺ ions causing acidification
           </span>
         </div>
         <div className="info-item">
           <span className="info-icon">🌊</span>
           <span className="info-text">
-            Larger quantities show diminishing returns due to natural ocean chemistry
+            50% concrete water needed to restore dead zones (pH 5 → pH 8)
+          </span>
+        </div>
+        <div className="info-item">
+          <span className="info-icon">♻️</span>
+          <span className="info-text">
+            Valorizes 30% of concrete production wastewater (300M liters/year)
+          </span>
+        </div>
+        <div className="info-item">
+          <span className="info-icon">🐟</span>
+          <span className="info-text">
+            Target pH 8.0 for healthy marine life ecosystem
           </span>
         </div>
       </div>

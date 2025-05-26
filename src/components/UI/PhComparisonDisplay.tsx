@@ -16,6 +16,8 @@ interface PhComparisonDisplayProps {
   impactColor: string;
   efficiency: number;
   warnings: string[];
+  restorationLevel?: string;
+  scientificNotes?: string[];
   onReset: () => void;
 }
 
@@ -28,6 +30,8 @@ export const PhComparisonDisplay: React.FC<PhComparisonDisplayProps> = ({
   impactColor,
   efficiency,
   warnings,
+  restorationLevel,
+  scientificNotes,
   onReset
 }) => {
   const phChange = newPh - originalPh;
@@ -59,7 +63,7 @@ export const PhComparisonDisplay: React.FC<PhComparisonDisplayProps> = ({
           🧪 Concrete Water Mixing Results
         </h3>
         <p className="comparison-subtitle">
-          {addedQuantity}L of concrete water added
+          {addedQuantity >= 1000 ? `${(addedQuantity / 1000).toFixed(1)}K L` : `${addedQuantity}L`} of concrete water added
         </p>
       </div>
 
@@ -98,44 +102,53 @@ export const PhComparisonDisplay: React.FC<PhComparisonDisplayProps> = ({
 
         <div className="metrics-grid">
           <div className="metric-item">
-            <span className="metric-icon">⚖️</span>
-            <span className="metric-label">Added quantity</span>
-            <span className="metric-value">{addedQuantity}L</span>
+            <div className="metric-icon">🏗️</div>
+            <div className="metric-content">
+              <span className="metric-label">Added quantity</span>
+              <span className="metric-value">
+                {addedQuantity >= 1000 ? `${(addedQuantity / 1000).toFixed(1)}K L` : `${addedQuantity}L`}
+              </span>
+            </div>
           </div>
 
           <div className="metric-item">
-            <span className="metric-icon">🔄</span>
-            <span className="metric-label">Mixing ratio</span>
-            <span className="metric-value">{formatPercentage(mixingRatio)}</span>
+            <div className="metric-icon">🔬</div>
+            <div className="metric-content">
+              <span className="metric-label">Mixing ratio</span>
+              <span className="metric-value">{(mixingRatio * 100).toFixed(2)}%</span>
+            </div>
           </div>
 
           <div className="metric-item">
-            <span className="metric-icon">⚡</span>
-            <span className="metric-label">Efficiency</span>
-            <span className="metric-value">{formatEfficiency(efficiency)}</span>
+            <div className="metric-icon">⚡</div>
+            <div className="metric-content">
+              <span className="metric-label">Efficiency</span>
+              <span className="metric-value">{efficiency.toFixed(3)}/1000L</span>
+            </div>
           </div>
+
+          {restorationLevel && (
+            <div className="metric-item">
+              <div className="metric-icon">🌊</div>
+              <div className="metric-content">
+                <span className="metric-label">Restoration</span>
+                <span className="metric-value">{restorationLevel}</span>
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
-      <div className="scientific-notes">
-        <h4 className="notes-title">
-          📋 Scientific Notes
-        </h4>
-        <div className="notes-content">
-          <div className="note-item">
-            <span className="note-icon">🧪</span>
-            <span className="note-text">
-              Calculation based on mixing principles (pH 5 + pH 12 → pH 7.5-8)
-            </span>
-          </div>
-          <div className="note-item">
-            <span className="note-icon">🌊</span>
-            <span className="note-text">
-              Ocean buffering effect applied (factor: 0.75)
-            </span>
-          </div>
+      {scientificNotes && scientificNotes.length > 0 && (
+        <div className="scientific-notes">
+          <h4>📋 Scientific Analysis</h4>
+          <ul>
+            {scientificNotes.map((note, index) => (
+              <li key={index}>{note}</li>
+            ))}
+          </ul>
         </div>
-      </div>
+      )}
 
       {warnings.length > 0 && (
         <div className="warnings-section">

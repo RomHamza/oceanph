@@ -130,6 +130,32 @@ const InfoPanel: React.FC = () => {
             impactColor={concreteImpactColor || '#28A745'}
             efficiency={concreteEfficiency || 0}
             warnings={concreteMixingWarnings || []}
+            restorationLevel={(() => {
+              if (!concreteOriginalPh || !concreteNewPh) return 'Unknown';
+              if (concreteOriginalPh <= 5.5 && concreteNewPh >= 7.5) return 'Dead Zone Restoration';
+              if (concreteOriginalPh <= 7.0 && concreteNewPh >= 7.8) return 'Acidification Mitigation';
+              if (concreteOriginalPh <= 7.7 && concreteNewPh >= 8.0) return 'Normal Ocean Restoration';
+              if (concreteNewPh > concreteOriginalPh) return 'pH Improvement';
+              return 'Minimal Impact';
+            })()}
+            scientificNotes={(() => {
+              const notes: string[] = [];
+              if (concreteMixingRatio) {
+                notes.push(`Mixing ratio: ${(concreteMixingRatio * 100).toFixed(4)}% concrete wastewater`);
+              }
+              if (concreteOriginalPh && concreteOriginalPh <= 5.5) {
+                notes.push('Dead zone detected - high restoration potential');
+                notes.push('~50% concrete water needed for full restoration (pH 8)');
+              }
+              if (concreteOriginalPh && concreteOriginalPh <= 7.7) {
+                notes.push('Acidified ocean water - concrete alkalinity helps neutralization');
+              }
+              if (concreteNewPh && concreteNewPh >= 8.0) {
+                notes.push('Target pH for marine life achieved');
+              }
+              notes.push('OH⁻ ions from concrete neutralize H⁺ ions causing acidification');
+              return notes;
+            })()}
             onReset={handleResetConcrete}
           />
         )}
@@ -156,18 +182,12 @@ const InfoPanel: React.FC = () => {
     if (!coordinates) {
       return (
         <div className="info-panel__welcome">
-          <h3>Ocean pH Visualizer</h3>
-          <p>Click anywhere on the map to analyze ocean pH levels at that location.</p>
-          <div className="info-panel__instructions">
-            <ul>
-              <li>🌊 Blue markers indicate ocean locations</li>
-              <li>🏔️ Red markers indicate land locations</li>
-              <li>⚪ Gray markers indicate analysis in progress</li>
-            </ul>
-          </div>
+          <h3>🌊 Ocean pH Restoration Simulator</h3>
+          <p>Valorisation des eaux résiduelles du béton pour lutter contre l'acidification des océans</p>
+          
           <div className="info-panel__new-feature">
-            <div className="new-feature-badge">🆕 New Feature</div>
-            <p>Now with concrete wash water simulation! Click on ocean areas to test pH changes from concrete water mixing.</p>
+            <span className="new-feature-badge">🏗️ Scientific Project</span>
+            <p>Simulate the use of concrete wastewater (pH 12.0) to neutralize ocean acidification. OH⁻ ions from concrete neutralize H⁺ ions causing acidification.</p>
           </div>
         </div>
       );

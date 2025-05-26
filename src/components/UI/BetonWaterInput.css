@@ -141,7 +141,7 @@
 
 .preset-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 12px;
 }
 
@@ -282,7 +282,7 @@
   }
   
   .preset-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
   
   .preset-button {
@@ -308,6 +308,10 @@
   .quantity-input {
     padding: 10px 14px;
     padding-right: 35px;
+  }
+  
+  .preset-grid {
+    grid-template-columns: 1fr;
   }
   
   .preset-button {
